@@ -1,6 +1,6 @@
 node_modules/
 src/frontend/dist/
-data/
+/data/
 uploads/
 .env
 .env.*
