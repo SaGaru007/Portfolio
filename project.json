@@ -1,0 +1,25 @@
+{
+  "overview": "A full-stack personal tech portfolio for Sagar M H — Java Developer & Spring Boot Engineer. Features auto-typing hero animation, scroll-triggered animations, certificate uploads, a protected admin dashboard for managing all portfolio content, and an AI recruiter chat that lets hiring managers ask questions about Sagar's skills, experience, and projects.",
+  "features": [
+    "Auto-typing hero cycling through 6 developer roles",
+    "Scroll-triggered fade/slide animations on all sections",
+    "Certificate & resume uploads via secure file storage",
+    "Protected admin dashboard to manage projects, certs & resume",
+    "AI Recruiter Chat — recruiters can ask questions and get profile-based answers",
+    "Functional GitHub, LinkedIn & email links",
+    "Black/silver/orange dark design system",
+    "Fully responsive on mobile and desktop"
+  ],
+  "category": "portfolio",
+  "tags": [
+    "portfolio",
+    "java",
+    "spring-boot",
+    "aws",
+    "backend",
+    "ai-chat",
+    "certificates",
+    "admin-dashboard"
+  ],
+  "last_updated": "2026-04-19T09:42:43.415Z"
+}

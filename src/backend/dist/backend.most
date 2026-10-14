@@ -1,0 +1,47 @@
+// Version: 1.0.0
+type CertificateId__346036693 = CertificateId__417577722;
+type CertificateId__417577722 = Nat;
+type Certificate__592097419 =
+  {
+    createdAt : Timestamp__301639476;
+    date : Text;
+    fileAssetId : Text;
+    id : CertificateId__346036693;
+    issuer : Text;
+    title : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type ProjectId__478417951 = Nat;
+type ProjectId__661817938 = ProjectId__478417951;
+type Project__614212307 =
+  {
+    createdAt : Timestamp__301639476;
+    demoLink : ?Text;
+    description : Text;
+    githubLink : ?Text;
+    id : ProjectId__661817938;
+    imageAssetId : ?Text;
+    techStack : [Text];
+    title : Text;
+    updatedAt : Timestamp__301639476
+  };
+type Timestamp__301639476 = Int;
+actor {
+  stable certificates :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Certificate__592097419]];
+      var elementIndex : Nat__490723111
+    };
+  stable var nextCertId : Nat;
+  stable var nextProjectId : Nat;
+  stable projects :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Project__614212307]];
+      var elementIndex : Nat__490723111
+    };
+  stable var resumeAssetId : ?Text;
+  stable var seeded : Bool
+};

@@ -1,0 +1,75 @@
+type UpdateProjectInput = 
+ record {
+   demoLink: opt text;
+   description: text;
+   githubLink: opt text;
+   id: ProjectId;
+   imageAssetId: opt text;
+   techStack: vec text;
+   title: text;
+ };
+type Timestamp = int;
+type ProjectId = nat;
+type Project = 
+ record {
+   createdAt: Timestamp;
+   demoLink: opt text;
+   description: text;
+   githubLink: opt text;
+   id: ProjectId;
+   imageAssetId: opt text;
+   techStack: vec text;
+   title: text;
+   updatedAt: Timestamp;
+ };
+type ChatRole = 
+ variant {
+   assistant;
+   user;
+ };
+type ChatMessage = 
+ record {
+   content: text;
+   role: ChatRole;
+ };
+type CertificateId = nat;
+type Certificate = 
+ record {
+   createdAt: Timestamp;
+   date: text;
+   fileAssetId: text;
+   id: CertificateId;
+   issuer: text;
+   title: text;
+ };
+type AddProjectInput = 
+ record {
+   demoLink: opt text;
+   description: text;
+   githubLink: opt text;
+   imageAssetId: opt text;
+   techStack: vec text;
+   title: text;
+ };
+type AddCertificateInput = 
+ record {
+   date: text;
+   fileAssetId: text;
+   issuer: text;
+   title: text;
+ };
+service : {
+  addCertificate: (input: AddCertificateInput) -> (Certificate);
+  addProject: (input: AddProjectInput) -> (Project);
+  deleteCertificate: (id: CertificateId) -> (bool);
+  deleteProject: (id: ProjectId) -> (bool);
+  generateRecruiterSummary: () -> (text);
+  getCertificate: (id: CertificateId) -> (opt Certificate) query;
+  getProject: (id: ProjectId) -> (opt Project) query;
+  getResumeAssetId: () -> (opt text) query;
+  listCertificates: () -> (vec Certificate) query;
+  listProjects: () -> (vec Project) query;
+  sendChatMessage: (history: vec ChatMessage, question: text) -> (text);
+  updateProject: (input: UpdateProjectInput) -> (bool);
+  updateResumeAssetId: (assetId: text) -> ();
+}

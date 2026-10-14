@@ -1,0 +1,7 @@
+node_modules/
+src/frontend/dist/
+data/
+uploads/
+.env
+.env.*
+!.env.example
