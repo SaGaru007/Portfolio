@@ -246,6 +246,32 @@ app.get("/api/settings", (_req, res) => {
   res.json(Object.fromEntries(db.prepare("SELECT key, value FROM settings").all().map((r) => [r.key, r.value])));
 });
 
+app.get("/resume", (_req, res, next) => {
+  const resumeUrl = db
+    .prepare("SELECT value FROM settings WHERE key='resume_url'")
+    .get()?.value;
+  const match = typeof resumeUrl === "string"
+    ? resumeUrl.match(/^\/uploads\/([0-9a-f-]+\.pdf)$/i)
+    : null;
+  if (!match) {
+    return res.status(404).json({ error: "No resume has been uploaded yet." });
+  }
+
+  const resumePath = path.join(uploadDir, match[1]);
+  if (!fs.existsSync(resumePath)) {
+    return res.status(404).json({ error: "The uploaded resume file is unavailable." });
+  }
+
+  res.download(match[1], "Sagar-M-H-Resume.pdf", { root: uploadDir }, (error) => {
+    if (!error || res.headersSent) return;
+    if (error.status === 404 || error.statusCode === 404) {
+      res.status(404).json({ error: "The uploaded resume file is unavailable." });
+      return;
+    }
+    next(error);
+  });
+});
+
 const upload = multer({
   storage: multer.diskStorage({
     destination: uploadDir,

@@ -244,8 +244,8 @@ export function HeroSection() {
               </Button>
 
               <a
-                href={resumeUrl}
-                download
+                href={resumeUrl ? "/resume" : undefined}
+                download="Sagar-M-H-Resume.pdf"
                 aria-disabled={!resumeUrl}
                 title={
                   resumeUrl

@@ -88,8 +88,8 @@ export function Header() {
 
             {/* Resume download — blue accent */}
             <a
-              href={resumeUrl}
-              download
+              href={resumeUrl ? "/resume" : undefined}
+              download="Sagar-M-H-Resume.pdf"
               aria-disabled={!resumeUrl}
               title={
                 resumeUrl
@@ -151,8 +151,8 @@ export function Header() {
 
           <div className="flex gap-2 mt-4">
             <a
-              href={resumeUrl}
-              download
+              href={resumeUrl ? "/resume" : undefined}
+              download="Sagar-M-H-Resume.pdf"
               onClick={() => setMenuOpen(false)}
               aria-disabled={!resumeUrl}
               title={
